@@ -1,0 +1,21 @@
+.main {
+  background: linear-gradient(to left, rgb(64, 177, 202), white);
+  grid-area: m;
+}
+
+.img {
+  width: 100%;
+  height: 100px;
+}
+
+.description {
+  display: flex;
+  padding: 10px;
+}
+
+.profile {
+  list-style: none;
+  padding: 0;
+  padding-left: 20px;
+  margin: 0;
+}

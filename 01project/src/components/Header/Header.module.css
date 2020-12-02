@@ -1,0 +1,10 @@
+.header {
+  background: linear-gradient(to right, white 10%, rgb(30, 194, 223, 90%));
+  grid-area: h;
+}
+
+.header img {
+  padding-top: 5px;
+  width: 50px;
+  margin-left: 20px;
+}

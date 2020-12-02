@@ -1,0 +1,12 @@
+.nav {
+  background: linear-gradient(35deg, rgb(64, 177, 202), white);
+  grid-area: n;
+}
+
+.list {
+  margin: 0;
+  padding: 10px 10px;
+  font-size: 22px;
+  color: white;
+  list-style: none;
+}

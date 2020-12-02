@@ -1,12 +1,12 @@
 
-import './App.css';
-import Header from './components/Header';
-import Navbar from './components/Nav';
-import Profile from './components/Profile';
+import s from './App.module.css';
+import Header from './components/Header/Header';
+import Navbar from './components/Nav/Nav';
+import Profile from './components/Profile/Profile';
 
 function App() {
   return (
-    <div className='app-wrapper'>
+    <div className={s.wrapper}>
       <Header />
       <Navbar />
       <Profile />
