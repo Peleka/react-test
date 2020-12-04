@@ -9,6 +9,11 @@
   "n m";
 }
 
+.wrapperContent {
+  background: linear-gradient(to left, rgb(64, 177, 202), white);
+  grid-area: m;
+}
+
 
 
 
