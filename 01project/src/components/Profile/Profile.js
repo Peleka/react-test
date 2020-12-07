@@ -1,14 +1,15 @@
 import React from 'react'
 import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
-import s from './Profile.module.css'
 
-const Profile = () => {
-  return (
+const Profile = props => {
+
+return (
     <main>
       <ProfileInfo />
-      
-      <MyPosts />
+      <MyPosts
+        posts={props.state.posts}
+      />
     </main>
   )
 }

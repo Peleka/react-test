@@ -1,0 +1,13 @@
+.dialogItem img {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.dialogItem {
+  padding: 10px;
+}
+
+.dialogItem .active {
+  color: gold;
+}

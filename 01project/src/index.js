@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import state from './redux/state'
+
+
 
 ReactDOM.render(
-    <App />,
+    <App state={state}
+    />,
   document.getElementById('root')
 );
 

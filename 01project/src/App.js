@@ -4,24 +4,36 @@ import s from './App.module.css';
 import Dialogs from './components/Dialogs/Dialogs';
 import Header from './components/Header/Header';
 import Music from './components/Music/Music';
-import Navbar from './components/Nav/Nav';
+import Navbar from './components/Nav/Navbar';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
 
-function App() {
+const App = props => {
+
+  console.log("siteBar", props.state.siteBar)
+
   return (
     <BrowserRouter>
     <div className={s.wrapper}>
       <Header />
-      <Navbar />
+      <Navbar 
+        state={props.state.siteBar}
+      />
       <div className={s.wrapperContent}>
-        <Route path='/profile' component={Profile} />
-        <Route path='/dialogs' component={Dialogs} />
-        <Route path='/news' component={News} />
-        <Route path='/music' component={Music} />
-        <Route path='/settings' component={Settings} />
+        <Route path='/profile' 
+                render={() => <Profile 
+                  state={props.state.profilePage}/>} />
+        <Route path='/dialogs' 
+               render={() => <Dialogs 
+                 state={props.state.messagesPage}
+          />}
+        />
+        <Route path='/news' render={() => <News />} />
+        <Route path='/music' render={() => <Music />} />
+        <Route path='/settings' render={() => <Settings/>} />
+        
       </div>
     </div>
     </BrowserRouter>
