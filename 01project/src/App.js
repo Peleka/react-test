@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import s from './App.module.css';
 import Dialogs from './components/Dialogs/Dialogs';
 import Header from './components/Header/Header';
@@ -15,7 +15,6 @@ const App = props => {
   console.log("siteBar", props.state.siteBar)
 
   return (
-    <BrowserRouter>
     <div className={s.wrapper}>
       <Header />
       <Navbar 
@@ -24,7 +23,9 @@ const App = props => {
       <div className={s.wrapperContent}>
         <Route path='/profile' 
                 render={() => <Profile 
-                  state={props.state.profilePage}/>} />
+                  state={props.state.profilePage}
+                  addPost={ props.addPost }
+         />} />
         <Route path='/dialogs' 
                render={() => <Dialogs 
                  state={props.state.messagesPage}
@@ -33,10 +34,9 @@ const App = props => {
         <Route path='/news' render={() => <News />} />
         <Route path='/music' render={() => <Music />} />
         <Route path='/settings' render={() => <Settings/>} />
-        
+
       </div>
     </div>
-    </BrowserRouter>
   );
 }
 

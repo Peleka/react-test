@@ -9,6 +9,7 @@ return (
       <ProfileInfo />
       <MyPosts
         posts={props.state.posts}
+        addPost={props.addPost}
       />
     </main>
   )
