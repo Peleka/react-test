@@ -16,17 +16,18 @@ const App = props => {
     <div className={s.wrapper}>
       <Header />
       <Navbar 
-        state={props.state.siteBar}
+        state={props.state.sideBar}
       />
       <div className={s.wrapperContent}>
         <Route path='/profile' 
                 render={() => <Profile 
-                  state={props.state.profilePage}
+                  state={ props.state.profilePage }
                   dispatch={ props.dispatch }
          />} />
         <Route path='/dialogs' 
                render={() => <Dialogs 
-                 state={props.state.messagesPage}
+                 state={ props.state.messagesPage }
+                 dispatch={ props.dispatch }
           />}
         />
         <Route path='/news' render={() => <News />} />

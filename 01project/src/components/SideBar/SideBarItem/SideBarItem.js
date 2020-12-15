@@ -1,8 +1,8 @@
 import React from 'react'
-import s from './SiteBarItem.module.css'
+import s from './SideBarItem.module.css'
 import { NavLink } from 'react-router-dom'
 
-const SiteBarItem = props => {
+const SideBarItem = props => {
   let path = "/friends/" + props.id
 
   return (
@@ -17,4 +17,4 @@ const SiteBarItem = props => {
   )
 }
 
-export default SiteBarItem;
+export default SideBarItem;
