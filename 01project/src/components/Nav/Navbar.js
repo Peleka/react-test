@@ -24,9 +24,9 @@ const Navbar = props => {
         </li>
       </ul>
       <div>
-        <SiteBar 
+        {/* <SiteBar 
           avatar={props.state.avatar}
-        />
+        /> */}
       </div>
     </nav>
   )

@@ -1,13 +1,13 @@
 
 import { Route } from 'react-router-dom';
 import s from './App.module.css';
-import Dialogs from './components/Dialogs/Dialogs';
 import Header from './components/Header/Header';
 import Music from './components/Music/Music';
 import Navbar from './components/Nav/Navbar';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
+import DialogsContainer from './components/Dialogs/DialogsContainer'
 
 
 const App = props => {
@@ -16,19 +16,16 @@ const App = props => {
     <div className={s.wrapper}>
       <Header />
       <Navbar 
-        state={props.state.sideBar}
+        // state={props.state.sideBar}
       />
       <div className={s.wrapperContent}>
-        <Route path='/profile' 
-                render={() => <Profile 
-                  state={ props.state.profilePage }
-                  dispatch={ props.dispatch }
-         />} />
-        <Route path='/dialogs' 
-               render={() => <Dialogs 
-                 state={ props.state.messagesPage }
-                 dispatch={ props.dispatch }
-          />}
+        <Route 
+          path='/profile' 
+          render={() => <Profile />} 
+        />
+        <Route 
+          path='/dialogs' 
+          render={() => <DialogsContainer />}
         />
         <Route path='/news' render={() => <News />} />
         <Route path='/music' render={() => <Music />} />
