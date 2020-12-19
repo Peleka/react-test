@@ -6,7 +6,7 @@ import Message from './Message/Message'
 
 const Dialogs = props => {
 
-  let newMessageBody = props.newMessageText
+  let newMessageBody = props.messagesPage.newMessageText
 
   let onNewMessageChange = (e) => {
     let body = e.target.value;
@@ -17,9 +17,9 @@ const Dialogs = props => {
     props.sendMessage()
   }
 
-  let dialogsElements = props.dialogsData.map( d => <DialogItem name={d.name} id={d.id} img={d.img}/> )
+  let dialogsElements = props.messagesPage.dialogsData.map( d => <DialogItem name={d.name} id={d.id} img={d.img} key={d.index}/> )
 
-  let messageElements = props.messageData.map( m => <Message message={m.message} id={m.id}/> )
+  let messageElements = props.messagesPage.messageData.map( m => <Message message={m.message} id={m.id} key={m.index} /> )
 
   return (
     <div className={s.dialogs}>
