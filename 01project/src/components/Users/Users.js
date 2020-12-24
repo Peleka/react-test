@@ -1,43 +1,65 @@
 import s from './Users.module.css'
 import React from 'react'
+import * as axios from 'axios'
 
-const Users = (props) => {
+class Users extends React.Component {
 
-  if(props.users.length === 0) {
-    props.setUsers(  [
-      { id: 1, photoUrl: 'https://hypeava.ru/uploads/posts/2019-08/1565965460_1.jpg',
-      name: 'Andrew', status: 'iam a boss', followed: true, location: {cityName: 'Minsk', country: 'Belarus'} },
-      { id: 2, photoUrl: 'https://hypeava.ru/uploads/posts/2019-08/1565965460_1.jpg',
-      name: 'Nasty', status: 'iam a student', followed: false, location: {cityName: 'Moscow', country: 'Russia'} },
-      { id: 3, photoUrl: 'https://hypeava.ru/uploads/posts/2019-08/1565965460_1.jpg',
-      name: 'Vital', status: 'iam a boss too', followed: true, location: {cityName: 'Kiev', country: 'Ukraine'} }
-      ]
-    )
+  componentDidMount() {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+        this.props.setUsers(response.data.items)
+      })
   }
 
-  return (
-    <div> 
-      {
-        props.users.map(u => <div key={u.id}>
-          <div>
-            <img src={u.photoUrl} className={s.photoUser}/>
-            <div> {u.followed
-             ? <button onClick={()=> {props.unfollow(u.id)}} >Follow</button> 
-             : <button onClick={()=> {props.follow(u.id)}} >Unfollow</button>} </div>
-          </div>
-          <div>
-            <p>{u.name}</p>
-            {u.status}
-          </div>
-          <div>
-            <p>{u.location.cityName}</p>
-            {u.location.country}
-          </div>
+  onPageChanged = (pageNumber) => {
+    this.props.setCurrentPage(pageNumber);
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+      .then(response => {
+        this.props.setUsers(response.data.items)
+    })
+    
+  }
 
-        </div>)
-      }
-    </div>
-  )
+  render() {
+
+    let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize) 
+
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+      pages.push(i);
+    }
+
+    return (
+      <div> 
+        <div>
+          {pages.map(p => {
+            return <span className={this.props.currentPage === p && s.selectPage}
+              onClick={(e) => {this.onPageChanged(p)}}>{p}</span>
+          })}
+        </div>
+        {
+          this.props.users.map(u => <div key={u.id}>
+            <div>
+              <img src={u.photos.small != null ? u.photos.small : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXBNELD15a-c-n8lu4Xw8onqEk-yFOfUiWSw&usqp=CAU"} className={s.photoUser}/>
+              <div> {u.followed
+               ? <button onClick={()=> {this.props.unfollow(u.id)}} >Follow</button> 
+               : <button onClick={()=> {this.props.follow(u.id)}} >Unfollow</button>
+               } 
+              </div>
+            </div>
+            <div>
+              <p>{u.name}</p>
+              {u.status}
+            </div>
+            <div>
+              <p>{"u.location.cityName"}</p>
+              {"u.location.country"}
+            </div>
+  
+          </div>)
+        }
+      </div>
+    )
+  }
 }
 
 export default Users
